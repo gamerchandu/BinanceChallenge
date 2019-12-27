@@ -1,0 +1,56 @@
+{
+    "src_folders": ["./tests/specs/"],
+    "reporter": ["allure",
+        {
+        "outputDir": "./allure-results/",
+        "disableWebdriverStepsReporting": false,
+        "disableWebdriverScreenshotsReporting": false
+        }
+    ],
+    "output_folder": "./allure-results",
+    "page_objects_path": "./tests/support/pages",
+    "globals_path": "./tests/support/helpers/allGlobals.js",
+
+    "selenium": {
+        "start_process": true,
+        "server_path": "node_modules\\selenium-server\\lib\\runner\\selenium-server-standalone-3.141.59.jar",
+        "host": "127.0.0.1",
+        "port": 4444,
+        "cli_args": {
+            "webdriver.chrome.driver": "node_modules\\chromedriver\\lib\\chromedriver\\chromedriver.exe",
+            "webdriver.gecko.driver": "node_modules\\geckodriver\\geckodriver.exe"
+        }
+    },
+    "live_output" : "",
+    "test_workers": { "enabled": false},
+    "test_settings": {
+        "default": {
+            "launch_url": "https://www.binance.com/",
+            "selenium_port"  : 4444,
+            "selenium_host"  : "127.0.0.1",
+            "silent": true,
+             "screenshots": {
+                "enabled": true,
+                "on_failure": true,
+                "on_error": true,
+                "path": "./screenshots"
+            },
+            "skip_testcases_on_fail": false,
+            "desiredCapabilities": {
+                "javascriptEnabled": true,
+                "acceptSslCerts": true
+            }
+        },
+        "chrome": {
+            "desiredCapabilities": {
+                "browserName": "chrome"
+            }
+        },
+
+        "firefox": {
+            "desiredCapabilities": {
+                "browserName": "firefox"
+            }
+        }
+    }
+}
