@@ -57,3 +57,11 @@ Once node is installed, execute:
     npm run report
 
 Also HTML reports are available in reports folder with timestamps as fileName
+
+
+### Websocket tests
+    
+  websocketLLine, websocketDepth - both files connect to websocket defined in globals and verify connection time.
+
+  It validates the received data structure with the schema defined in helpers folder
+  minimum and maximum values are defined in schema
