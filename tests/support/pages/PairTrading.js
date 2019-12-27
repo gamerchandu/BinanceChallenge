@@ -1,14 +1,12 @@
-require('../../../nightwatch.conf');
-
+require('../../../nightwatch.json');
 module.exports = {
     url: function () {
-        return this.api.globals.baseUrl + 'en' + '/trade/ETH_BTC';
+        return 'en/trade/ETH_BTC';
     },
     commands: [
         {
             verifyTotal: function () {
                 this.waitForElementVisible('@total');
-
                 this.api.getAttribute(this.elements['total'].selector, 'value', function (result) {
                     require('assert').equal(result.value, ( this.globals.price * this.globals.amount ).toFixed(8));
                 });

@@ -1,9 +1,7 @@
-require('../../../nightwatch.conf');
-const pageActions = require('./PageActions');
-
+require('../../../nightwatch.json');
 module.exports = {
     url: function() { 
-        return this.api.globals.baseUrl + 'en' ;
+        return '/en';
     },
     elements: {
         ETHButton: {

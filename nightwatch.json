@@ -2,34 +2,38 @@
     "src_folders": ["./tests/specs/"],
     "reporter": ["allure",
         {
-        "outputDir": "./allure-results/",
-        "disableWebdriverStepsReporting": false,
-        "disableWebdriverScreenshotsReporting": false
+            "outputDir": "./allure-results/",
+            "disableWebdriverStepsReporting": false,
+            "disableWebdriverScreenshotsReporting": false
         }
     ],
     "output_folder": "./allure-results",
+    "custom_commands_path": "./tests/support/commands",
     "page_objects_path": "./tests/support/pages",
-    "globals_path": "./tests/support/helpers/allGlobals.js",
-
+    "globals_path": "./tests/support/helpers/allGlobals",
+    "live_output": false,
+    "test_workers": { "enabled": false },
     "selenium": {
         "start_process": true,
         "server_path": "node_modules\\selenium-server\\lib\\runner\\selenium-server-standalone-3.141.59.jar",
-        "host": "127.0.0.1",
+        "log_path": "logs",
         "port": 4444,
         "cli_args": {
             "webdriver.chrome.driver": "node_modules\\chromedriver\\lib\\chromedriver\\chromedriver.exe",
             "webdriver.gecko.driver": "node_modules\\geckodriver\\geckodriver.exe"
         }
     },
-    "live_output" : "",
-    "test_workers": { "enabled": false},
     "test_settings": {
         "default": {
             "launch_url": "https://www.binance.com/",
-            "selenium_port"  : 4444,
-            "selenium_host"  : "127.0.0.1",
+            "selenium_port": 4444,
+            "selenium_host": "ondemand.saucelabs.com",
+            "username": "${SAUCE_USERNAME}",
+            "access_key": "${SAUCE_ACCESS_KEY}",
+            "use_ssl": false,
             "silent": true,
-             "screenshots": {
+            "output": true,
+            "screenshots": {
                 "enabled": true,
                 "on_failure": true,
                 "on_error": true,
@@ -37,19 +41,64 @@
             },
             "skip_testcases_on_fail": false,
             "desiredCapabilities": {
+                "name": "Binance-sauce-lab",
+                "tags": "Binance-sauce",
                 "javascriptEnabled": true,
-                "acceptSslCerts": true
+                "acceptSslCerts": true,
+            },
+            "globals": {
+                "propertyData": {
+                    "environment": "default"
+                }
+            },
+            "selenium": {
+                "start_process": false
             }
         },
-        "chrome": {
+        "sauce-android": {
             "desiredCapabilities": {
+                "name": "Nightwatch - Mobile Web Android",
+                "appiumVersion": "1.6.5",
+                "platformName": "Android",
+                "platformVersion": "7.0",
+                "deviceName": "Android GoogleAPI Emulator",
                 "browserName": "chrome"
+            },
+            "globals": {
+                "propertyData": {
+                    "environment": "android-7"
+                }
             }
         },
-
-        "firefox": {
+        "local-chrome": {
             "desiredCapabilities": {
-                "browserName": "firefox"
+                "name": "Nightwatch-local-chrome",
+                "browserName": "chrome",
+                "chromeOptions": {
+                    "w3c": false
+                },
+                "globals": {
+                    "propertyData": {
+                        "environment": "local-chrome"
+                    }
+                },
+                "selenium_host": "localhost",
+                "selenium": {
+                    "start_process": true
+                }
+            }
+        },
+        "sauce-safari": {
+            "desiredCapabilities": { 
+                "name": "Nightwatch-local-chrome",
+                "browserName": "safari",
+                "browserVersion": "latest",
+                "platformName": "macOS 10.12",
+                "globals": {
+                    "propertyData": {
+                        "environment": "MacOS"
+                    }
+                }
             }
         }
     }

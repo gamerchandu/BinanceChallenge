@@ -38,6 +38,20 @@ Once node is installed, execute:
     ex: npm test tests\spec\pairTrading.spec
 
 
+### How do I run tests on different browsers?
+
+    npm test --e <browser> <PathToSpec> 
+
+    ex: npm test  --e local-chrome tests\spec\pairTrading.spec
+
+### How do I run tests on saucelabs
+
+    npm test --e <saucelabsBrowser>  <PathToSpec>
+
+    ex: npm test --e sauce-safari  tests\spec\pairTrading.spec
+
+
+
 ### Generate Allure report 
     
     npm run report
